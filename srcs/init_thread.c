@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:55:48 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/19 21:21:18 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 03:07:16 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_thread2(t_inf *info, int i)
 {
 	while (1)
 	{
-		usleep(20);
+		usleep(50);
 		while (++i < info->nb_philo)
 		{
 			pthread_mutex_lock(&info->glob[0]);
@@ -30,6 +30,8 @@ void	init_thread2(t_inf *info, int i)
 			{
 				info->phiphi[i]->stop[0] = 1;
 				print_val("is dead", info->phiphi[i]);
+				pthread_mutex_unlock(&info->glob[0]);
+				return ;
 			}
 			pthread_mutex_unlock(&info->glob[0]);
 		}

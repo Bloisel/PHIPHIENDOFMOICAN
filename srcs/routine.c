@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:56:57 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/20 01:21:42 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 03:03:58 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ void	*is_eating(t_philo *info)
 	if (check_end(info) == 0)
 		print_val("is eating", info);
 	if (info->nb_m_eat != -50)
+	{
+		pthread_mutex_lock(&info->glob[0]);
 		info->count++;
+		pthread_mutex_unlock(&info->glob[0]);
+	}
 	ft_usleep(info->time_to_eat * 1000, info);
 	return (NULL);
 }
@@ -55,12 +59,14 @@ void	*fork_test(t_philo *info)
 	{
 		if (check_end(info) == 1)
 		{
-			pthread_mutex_lock(&info->print[0]);
+			printf("ok");
+			pthread_mutex_lock(&info->glob[0]);
 			info->compteur[0]++;
-			pthread_mutex_unlock(&info->print[0]);
+			pthread_mutex_unlock(&info->glob[0]);
 			pthread_mutex_unlock(&info->fork[info->left_fork]);
 			return (NULL);
 		}
+		return (NULL);
 	}
 	pthread_mutex_lock(&info->fork[info->right_fork]);
 	if (check_end(info) == 0)
@@ -88,6 +94,7 @@ void	*thread_routine(void *philo_struct)
 	}
 	if (phi->nb_philo > 1)
 	{
+		usleep(50);
 		pthread_mutex_lock(&phi->glob[0]);
 		phi->compteur[0]++;
 		pthread_mutex_unlock(&phi->glob[0]);

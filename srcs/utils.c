@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:40:54 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/19 15:18:39 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 02:48:02 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_val(char *str, t_philo *phil)
 	pthread_mutex_lock(&phil->print[0]);
 	ms = 0;
 	ms = (timeval() - phil->time_to_start);
-	if (ms >= 0 && phil->compteur[0] != phil->nb_philo)
+	if (ms >= 0)
 		printf("%ld, %d, %s\n", ms, phil->id, str);
 	pthread_mutex_unlock(&phil->print[0]);
 }

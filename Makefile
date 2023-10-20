@@ -6,13 +6,13 @@
 #    By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 18:33:37 by bloisel           #+#    #+#              #
-#    Updated: 2023/10/20 01:19:37 by bloisel          ###   ########.fr        #
+#    Updated: 2023/10/20 02:28:39 by bloisel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-FLAGS = -Wall -Werror -Wextra -fsanitize=thread 
+FLAGS = -Wall -Werror -Wextra -fsanitize=thread -g
 
 CC = gcc
 
