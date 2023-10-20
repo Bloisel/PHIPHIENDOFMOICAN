@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:41:03 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/20 01:19:00 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 04:05:05 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	main(int argc, char **argv)
 		if (init_philo(info) != 1)
 			init_thread(info);
 	}
-	if (free_resources(info) != 0)
-		return (1);
+	// if (free_resources(info) != 0)
+	// 	return (1);
+	// system("leaks philo");
 	return (0);
 }
