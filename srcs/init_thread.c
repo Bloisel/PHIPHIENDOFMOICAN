@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:55:48 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/20 03:41:38 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 05:09:27 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	init_thread2(t_inf *info, int i)
 						- info->phiphi[i]->last_eat[0])))
 			{
 				info->phiphi[i]->stop[0] = 1;
-				print_val("is dead", info->phiphi[i]);
+				printf("%lld %d died\n", timeval()
+					- info->time_to_start, info->phiphi[i]->id);
 			}
 			pthread_mutex_unlock(&info->glob[0]);
 		}

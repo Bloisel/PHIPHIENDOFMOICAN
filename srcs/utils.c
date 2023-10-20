@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:40:54 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/20 03:45:41 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 14:33:00 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,12 @@ void	ft_usleep(long long milis, t_philo *info)
 
 void	print_val(char *str, t_philo *phil)
 {
-	long	ms;
+	long long	ms;
 
-	if (pthread_mutex_lock(&phil->print[0]) != 0)
-		return ;
 	ms = 0;
+	pthread_mutex_lock(&phil->print[0]);
 	ms = (timeval() - phil->time_to_start);
-	if (ms >= 0)
-	{
-		printf("%ld, %d, %s\n", ms, phil->id, str);
-		pthread_mutex_unlock(&phil->print[0]);
-	}
+	if (ms >= 0 && check_end(phil) == 0)
+		printf("%lld %d %s\n", ms, phil->id, str);
 	pthread_mutex_unlock(&phil->print[0]);
 }

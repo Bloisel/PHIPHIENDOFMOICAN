@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:45:34 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/19 17:15:51 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 14:38:21 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	check_num(char **str)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	signe;
+	int												i;
+	int												signe;
+	long											res;
 
 	i = 0;
 	signe = 1;
@@ -62,5 +62,19 @@ int	ft_isdigit(int character)
 {
 	if (character >= '0' && character <= '9')
 		return (1);
+	return (0);
+}
+
+int	check_max(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_atoi(str[i]) > MAX)
+			return (1);
+		i++;
+	}
 	return (0);
 }

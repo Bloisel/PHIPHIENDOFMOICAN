@@ -6,12 +6,14 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:35:20 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/19 18:42:45 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 15:02:49 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+# define MAX 2147483647
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -72,6 +74,7 @@ int									free_resources(t_inf *inf);
 long long							timeval(void);
 int									check_num(char **str);
 int									ft_isdigit(int character);
-int									ft_atoi(const char *str);
+long								ft_atoi(const char *str);
+int									check_max(char **str);
 
 #endif
