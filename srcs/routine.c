@@ -6,7 +6,7 @@
 /*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:56:57 by bloisel           #+#    #+#             */
-/*   Updated: 2023/10/20 03:03:58 by bloisel          ###   ########.fr       */
+/*   Updated: 2023/10/20 03:55:42 by bloisel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,9 @@ void	*fork_test(t_philo *info)
 	{
 		if (check_end(info) == 1)
 		{
-			printf("ok");
-			pthread_mutex_lock(&info->glob[0]);
-			info->compteur[0]++;
-			pthread_mutex_unlock(&info->glob[0]);
 			pthread_mutex_unlock(&info->fork[info->left_fork]);
 			return (NULL);
 		}
-		return (NULL);
 	}
 	pthread_mutex_lock(&info->fork[info->right_fork]);
 	if (check_end(info) == 0)
@@ -92,12 +87,8 @@ void	*thread_routine(void *philo_struct)
 		fork_test(phi);
 		is_sleeping(phi);
 	}
-	if (phi->nb_philo > 1)
-	{
-		usleep(50);
-		pthread_mutex_lock(&phi->glob[0]);
-		phi->compteur[0]++;
-		pthread_mutex_unlock(&phi->glob[0]);
-	}
+	pthread_mutex_lock(&phi->glob[0]);
+	phi->compteur[0]++;
+	pthread_mutex_unlock(&phi->glob[0]);
 	return (NULL);
 }
